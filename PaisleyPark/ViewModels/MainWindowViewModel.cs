@@ -98,6 +98,24 @@ namespace PaisleyPark.ViewModels
                 //don't do anything :)
             });
 
+            // Subscribe to the waymark retrieve event from the REST server.
+            EventAggregator.GetEvent<WaymarkLoadEvent>().Subscribe(str =>
+            {
+                foreach(Preset p in UserSettings.Presets)
+                {
+                    if(p.Name == str.Name)
+                    {
+                        WriteWaymark(p.A);
+                        WriteWaymark(p.B);
+                        WriteWaymark(p.C);
+                        WriteWaymark(p.D);
+                        WriteWaymark(p.One);
+                        WriteWaymark(p.Two);
+                        break;
+                    }
+                }
+            });
+
             // Create the commands.
             LoadPresetCommand = new DelegateCommand(LoadPreset);
             ClosingCommand = new DelegateCommand(OnClose);

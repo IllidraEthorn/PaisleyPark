@@ -8,6 +8,7 @@ namespace PaisleyPark.Common
 {
     public class RESTWaymark
     {
+        public string Name { get; set; }
         public Waymark A { get; set; }
         public Waymark B { get; set; }
         public Waymark C { get; set; }
@@ -49,6 +50,15 @@ namespace PaisleyPark.Common
 
                 // Serialize and return the response.
                 return JsonConvert.SerializeObject(response);
+            };
+            Post["/load"] = data =>
+            {
+                var loadinfo = this.Bind<RESTWaymark>();
+
+                var e = MainWindowViewModel.EventAggregator.GetEvent<WaymarkLoadEvent>();
+
+                e.Publish(loadinfo);
+                return "OK";
             };
         }
     }
