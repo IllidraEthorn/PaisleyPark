@@ -29,6 +29,13 @@ namespace PaisleyPark.Common
                 // Publish the waymarks from the request.
                 e.Publish(waymarks);
 
+                return "OK";
+            };
+            Post["/retrieve"] = data =>
+            {
+
+                var e = MainWindowViewModel.EventAggregator.GetEvent<WaymarkRetrieveEvent>();
+
                 // Create response.
                 var response = new RESTWaymark
                 {
