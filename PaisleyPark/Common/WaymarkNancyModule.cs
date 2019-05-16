@@ -28,31 +28,6 @@ namespace PaisleyPark.Common
                 var e = MainWindowViewModel.EventAggregator.GetEvent<WaymarkEvent>();
                 // Publish the waymarks from the request.
                 e.Publish(waymarks);
-                /*
-                // Create response.
-                var response = new RESTWaymark
-                {
-                    A = MainWindowViewModel.GameMemory.A,
-                    B = MainWindowViewModel.GameMemory.B,
-                    C = MainWindowViewModel.GameMemory.C,
-                    D = MainWindowViewModel.GameMemory.D,
-                    One = MainWindowViewModel.GameMemory.One,
-                    Two = MainWindowViewModel.GameMemory.Two
-                };
-
-                // Serialize and return the response.
-                return JsonConvert.SerializeObject(response);*/
-                return "OK";
-            };/*
-            Post["/retrieve"] = data =>
-            {
-
-
-                var waymarks = this.Bind<bool>();
-                // Get event to publish to.
-                var e = MainWindowViewModel.EventAggregator.GetEvent<WaymarkRetrieveEvent>();
-                // Publish the waymarks from the request.
-                e.Publish(true);
 
                 // Create response.
                 var response = new RESTWaymark
@@ -67,7 +42,7 @@ namespace PaisleyPark.Common
 
                 // Serialize and return the response.
                 return JsonConvert.SerializeObject(response);
-            };*/
+            };
         }
     }
 }
