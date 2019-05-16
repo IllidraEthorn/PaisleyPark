@@ -5,6 +5,8 @@
       <ZipFiles Include="$(OutputPath)PaisleyPark.exe" />
       <ZipFiles Include="$(OutputPath)NLog.config" />
       <ZipFiles Include="$(OutputPath)AsmjitCSharp.dll" />
+      <ZipFiles Include="$(OutputPath)Offsets.json" />
+      <ZipFiles Include="$(OutputPath)update.ps1" />
     </ItemGroup>
     <Zip Files="@(ZipFiles)" WorkingDirectory="$(OutputPath)" ZipFileName="$(OutputPath)PaisleyPark.zip" />
   </Target>
