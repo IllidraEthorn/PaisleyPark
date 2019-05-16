@@ -81,7 +81,7 @@ namespace PaisleyPark.ViewModels
             // Load the settings file.
             UserSettings = Settings.Load();
 
-            // Subscribe to the waymark event from the REST server.
+            // Subscribe to the waymark place event from the REST server.
             EventAggregator.GetEvent<WaymarkEvent>().Subscribe(waymarks =>
             {
                 WriteWaymark(waymarks.A);
@@ -91,6 +91,30 @@ namespace PaisleyPark.ViewModels
                 WriteWaymark(waymarks.One);
                 WriteWaymark(waymarks.Two);
             });
+            /*
+            // Subscribe to the waymark retrieve event from the REST server.
+            EventAggregator.GetEvent<WaymarkRetrieveEvent>().Subscribe(isGood =>
+            {
+
+            });
+            /*
+            // Subscribe to the waymark load event from the REST server.
+            EventAggregator.GetEvent<WaymarkLoadEvent>().Subscribe(preset =>
+            {
+                foreach (Preset p in UserSettings.Presets)
+                {
+                    if(p.Name == preset.name)
+                    {
+                        WriteWaymark(p.A);
+                        WriteWaymark(p.B);
+                        WriteWaymark(p.C);
+                        WriteWaymark(p.D);
+                        WriteWaymark(p.One);
+                        WriteWaymark(p.Two);
+                        break;
+                    }
+                }
+            });*/
 
             // Create the commands.
             LoadPresetCommand = new DelegateCommand(LoadPreset);
