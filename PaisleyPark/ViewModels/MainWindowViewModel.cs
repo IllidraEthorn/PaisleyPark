@@ -92,6 +92,12 @@ namespace PaisleyPark.ViewModels
                 WriteWaymark(waymarks.Two);
             });
 
+            // Subscribe to the waymark event from the REST server.
+            EventAggregator.GetEvent<WaymarkRetrieveEvent>().Subscribe(isGood =>
+            {
+
+            });
+
             // Create the commands.
             LoadPresetCommand = new DelegateCommand(LoadPreset);
             ClosingCommand = new DelegateCommand(OnClose);
